@@ -108,4 +108,4 @@ DevLogix/
 
 ---
 
-*Built by DevLogix Team.*
+*Built by DevLogix Sujit Chaudhary.*
