@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Kanban Board";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Kanban Board</h1>
+    <a asp-action="Index" asp-route-projectId="@ViewBag.ProjectId" class="btn btn-outline-secondary">
+        List View
+    </a>
+</div>
+
+<div id="kanban-root" data-project-id="@ViewBag.ProjectId"></div>
+
+@section Scripts {
+    <script src="~/kanban/kanban.js"></script>
+}

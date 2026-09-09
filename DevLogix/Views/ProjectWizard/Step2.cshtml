@@ -1,0 +1,38 @@
+@model DevLogix.ViewModels.Wizard.WizardStep2ViewModel
+@{
+    ViewData["Title"] = "Project Wizard - Step 2";
+}
+
+<div class="container mt-4">
+    <h2>Create New Project</h2>
+    <div class="mb-4">
+        <span class="badge bg-primary">Step 2 of 3: Settings</span>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="Step2" method="post">
+                <input type="hidden" name="StepState" value="Step2" />
+                
+                <div class="mb-3 form-check">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DefaultPriority" class="form-label"></label>
+                    <select asp-for="DefaultPriority" class="form-select">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                    <span asp-validation-for="DefaultPriority" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Step1" class="btn btn-secondary">Previous</a>
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

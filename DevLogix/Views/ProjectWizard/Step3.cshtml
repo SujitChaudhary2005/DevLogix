@@ -1,0 +1,38 @@
+@model DevLogix.ViewModels.Wizard.WizardStep3ViewModel
+@{
+    ViewData["Title"] = "Project Wizard - Step 3";
+}
+
+<div class="container mt-4">
+    <h2>Create New Project</h2>
+    <div class="mb-4">
+        <span class="badge bg-primary">Step 3 of 3: Review</span>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Review Details</h4>
+            <dl class="row mt-3">
+                <dt class="col-sm-3">Title</dt>
+                <dd class="col-sm-9">@Model.Title</dd>
+
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+
+                <dt class="col-sm-3">Is Active</dt>
+                <dd class="col-sm-9">@(Model.IsActive ? "Yes" : "No")</dd>
+
+                <dt class="col-sm-3">Default Priority</dt>
+                <dd class="col-sm-9">@Model.DefaultPriority</dd>
+            </dl>
+        </div>
+    </div>
+
+    <form asp-action="Complete" method="post" class="d-flex justify-content-between">
+        <a asp-action="Step2" class="btn btn-secondary">Previous</a>
+        <div>
+            <a asp-action="Cancel" class="btn btn-outline-danger me-2">Cancel</a>
+            <button type="submit" class="btn btn-success">Confirm & Create</button>
+        </div>
+    </form>
+</div>

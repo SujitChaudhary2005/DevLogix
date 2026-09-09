@@ -1,31 +1,163 @@
-html {
-  font-size: 14px;
+/* DevLogix — Site Styles */
+
+/* ───── Priority & Status Color System ───── */
+.badge-todo { background-color: #6c757d !important; }
+.badge-inprogress { background-color: #0d6efd !important; }
+.badge-resolved { background-color: #198754 !important; }
+.badge-closed { background-color: #212529 !important; }
+.badge-reopened { background-color: #ffc107 !important; color: #212529 !important; }
+
+.badge-low { background-color: #0dcaf0 !important; color: #212529 !important; }
+.badge-medium { background-color: #ffc107 !important; color: #212529 !important; }
+.badge-high { background-color: #dc3545 !important; }
+.badge-critical { background-color: #dc3545 !important; border: 2px solid #a71d2a !important; }
+
+/* ───── Card Hover Effects ───── */
+.card.shadow-sm:hover {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    transition: box-shadow .2s ease-in-out;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/* ───── Wizard Step Indicator ───── */
+.wizard-steps {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2rem;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.wizard-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: #6c757d;
+    font-weight: 500;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.wizard-step.active {
+    color: #0d6efd;
+    font-weight: 700;
 }
 
-body {
-  margin-bottom: 60px;
+.wizard-step.completed {
+    color: #198754;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.wizard-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    font-size: 0.875rem;
+    font-weight: 700;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.wizard-step.active .wizard-step-number {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.wizard-step.completed .wizard-step-number {
+    background-color: #198754;
+    color: white;
+}
+
+.wizard-step-divider {
+    width: 40px;
+    height: 2px;
+    background-color: #dee2e6;
+    align-self: center;
+}
+
+/* ───── Dashboard Metric Cards ───── */
+.metric-card {
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+}
+
+.metric-card .card-body h3 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* ───── Empty States ───── */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.empty-state h3 {
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: #adb5bd;
+    margin-bottom: 1.5rem;
+}
+
+/* ───── Dark Theme Support ───── */
+[data-bs-theme="dark"] body {
+    background-color: #1a1a2e;
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: #16213e !important;
+    border-color: #0f3460 !important;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #1a1a2e;
+    border-color: #2a2a4a;
+}
+
+[data-bs-theme="dark"] .table {
+    color: #e0e0e0;
+}
+
+/* ───── Responsive Kanban ───── */
+@media (max-width: 768px) {
+    #kanban-root > div > div {
+        flex-direction: column !important;
+    }
+
+    #kanban-root > div > div > div {
+        max-width: 100% !important;
+        min-width: 100% !important;
+    }
+}
+
+/* ───── Loading Spinner ───── */
+.loading-spinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ───── Footer ───── */
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }

@@ -1,6 +1,3 @@
-﻿using System.Net.Mail;
-using System.Xml.Linq;
-
 namespace DevLogix.Models;
 
 public class Ticket

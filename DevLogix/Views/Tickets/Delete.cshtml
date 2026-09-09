@@ -1,0 +1,41 @@
+@model DevLogix.ViewModels.Tickets.TicketDetailsViewModel
+@{
+    ViewData["Title"] = "Delete Ticket";
+}
+
+<h1 class="text-danger">Delete Ticket</h1>
+<hr />
+
+<div class="alert alert-danger">
+    <h4 class="alert-heading">Are you sure?</h4>
+    <p>This will permanently delete ticket <strong>@Model.Title</strong> and all its comments, time logs, and attachments.</p>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Title</dt>
+            <dd class="col-sm-9">@Model.Title</dd>
+
+            <dt class="col-sm-3">Status</dt>
+            <dd class="col-sm-9">@Model.Status</dd>
+
+            <dt class="col-sm-3">Priority</dt>
+            <dd class="col-sm-9">@Model.Priority</dd>
+
+            <dt class="col-sm-3">Created By</dt>
+            <dd class="col-sm-9">@Model.CreatedByName</dd>
+
+            <dt class="col-sm-3">Comments</dt>
+            <dd class="col-sm-9">@Model.Comments.Count</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger">Yes, Delete Ticket</button>
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>

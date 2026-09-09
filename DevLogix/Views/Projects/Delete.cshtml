@@ -1,0 +1,39 @@
+@model DevLogix.ViewModels.Projects.ProjectListViewModel
+@{
+    ViewData["Title"] = "Delete Project";
+}
+
+<h1 class="text-danger">Delete Project</h1>
+<hr />
+
+<div class="alert alert-danger">
+    <h4 class="alert-heading">Are you sure you want to delete this project?</h4>
+    <p>This will permanently delete the project <strong>@Model.Title</strong> and all associated tickets, comments, time logs, and attachments.</p>
+    <p class="mb-0"><strong>This action cannot be undone.</strong></p>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Title</dt>
+            <dd class="col-sm-9">@Model.Title</dd>
+
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+
+            <dt class="col-sm-3">Members</dt>
+            <dd class="col-sm-9">@Model.MemberCount</dd>
+
+            <dt class="col-sm-3">Tickets</dt>
+            <dd class="col-sm-9">@Model.TicketCount</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger">Yes, Delete Project</button>
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>

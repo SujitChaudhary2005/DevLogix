@@ -1,0 +1,90 @@
+@model DevLogix.Services.DashboardMetrics
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>System Dashboard</h2>
+        @if (User.IsInRole("Admin") || User.IsInRole("PM"))
+        {
+            <a asp-controller="Export" asp-action="ExportTickets" class="btn btn-outline-primary">
+                <i class="bi bi-download"></i> Export All Tickets
+            </a>
+        }
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Projects</h5>
+                    <p class="card-text display-4">@Model.TotalProjects</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Tickets</h5>
+                    <p class="card-text display-4">@Model.TotalTickets</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Open Tickets</h5>
+                    <p class="card-text display-4">@Model.OpenTickets</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+                    <p class="card-text display-4">@Model.TotalUsers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Tickets by Status
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach (var sc in Model.TicketsByStatus)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @sc.Status
+                                <span class="badge bg-primary rounded-pill">@sc.Count</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Tickets by Priority
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach (var pc in Model.TicketsByPriority)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @pc.Priority
+                                <span class="badge bg-primary rounded-pill">@pc.Count</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

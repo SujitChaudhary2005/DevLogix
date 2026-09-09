@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Net.Mail;
-using System.Net.Sockets;
-using System.Xml.Linq;
+using Microsoft.AspNetCore.Identity;
 
 namespace DevLogix.Models;
 

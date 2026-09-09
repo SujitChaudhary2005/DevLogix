@@ -1,0 +1,58 @@
+@model DevLogix.ViewModels.Projects.ProjectListViewModel[]
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Projects</h1>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-lg"></i> New Project
+    </a>
+</div>
+
+@if (Model == null || Model.Length == 0)
+{
+    <div class="text-center py-5">
+        <h3 class="text-muted">No projects yet</h3>
+        <p class="text-muted">Create your first project to get started.</p>
+        <a asp-action="Create" class="btn btn-primary">Create Project</a>
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var project in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <h5 class="card-title">
+                                <a asp-action="Details" asp-route-id="@project.Id" class="text-decoration-none">
+                                    @project.Title
+                                </a>
+                            </h5>
+                            @if (project.IsActive)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Inactive</span>
+                            }
+                        </div>
+                        <p class="card-text text-muted">
+                            @(project.Description.Length > 120 ? project.Description[..120] + "..." : project.Description)
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <small class="text-muted">
+                            <span class="me-3"><i class="bi bi-people"></i> @project.MemberCount members</span>
+                            <span><i class="bi bi-ticket-detailed"></i> @project.TicketCount tickets</span>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<DevLogix.Models.ApplicationUser> SignInManager
+@inject UserManager<DevLogix.Models.ApplicationUser> UserManager
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="@(Context.Request.Cookies["theme"] ?? "light")">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,9 +26,55 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Projects" asp-action="Index">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="ProjectWizard" asp-action="Step1">New Project Wizard</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item me-2">
+                            <form asp-controller="Theme" asp-action="Toggle" method="post" class="d-inline">
+                                <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                                <button type="submit" class="btn btn-sm btn-outline-secondary border-0" title="Toggle theme">
+                                    @if ((Context.Request.Cookies["theme"] ?? "light") == "dark")
+                                    {
+                                        <span>☀️</span>
+                                    }
+                                    else
+                                    {
+                                        <span>🌙</span>
+                                    }
+                                </button>
+                            </form>
                         </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link text-dark">Hello, @UserManager.GetUserName(User)!</span>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit" class="nav-link btn btn-link text-dark border-0 bg-transparent">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -33,6 +82,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_FlashMessages" />
             @RenderBody()
         </main>
     </div>
