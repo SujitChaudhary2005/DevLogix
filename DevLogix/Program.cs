@@ -61,6 +61,20 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+// Seed Admin User
+using (var scope = app.Services.CreateScope())
+{
+    try 
+    {
+        await DevLogix.Data.DbSeeder.SeedAdminUserAsync(scope.ServiceProvider);
+    } 
+    catch (Exception ex) 
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

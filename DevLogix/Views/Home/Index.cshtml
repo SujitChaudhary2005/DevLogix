@@ -2,79 +2,152 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="hero-section text-center mb-5 shadow-sm">
+<div class="hero-section">
     <div class="container position-relative z-index-1">
-        <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill fw-semibold">
-            ✨ DevLogix 2.0 is here
-        </span>
-        <h1 class="hero-title mb-4">Manage work.<br/>Ship faster.</h1>
-        <p class="lead text-muted mx-auto mb-5" style="max-width: 600px; font-size: 1.25rem;">
-            A premium, high-performance project management and issue tracking system built for modern development teams.
-        </p>
+        <div class="animate-fade-in-up">
+            <span class="badge bg-primary bg-opacity-10 text-primary mb-4 px-4 py-2 rounded-pill fw-semibold fs-6 border border-primary border-opacity-25">
+                ✨ DevLogix 2.0 is here
+            </span>
+            <h1 class="hero-title">
+                Manage work. <br />
+                <span class="text-gradient">Ship faster.</span>
+            </h1>
+            <p class="lead text-muted mx-auto mb-5" style="max-width: 600px; font-size: 1.25rem;">
+                A premium, high-performance project management and issue tracking system built for modern development teams.
+            </p>
+        </div>
 
-        @if (User.Identity?.IsAuthenticated == true)
-        {
-            <div class="d-flex gap-3 justify-content-center">
-                <a asp-controller="Projects" asp-action="Index" class="btn btn-primary btn-lg shadow-sm px-4">
+        <div class="d-flex gap-3 justify-content-center animate-fade-in-up delay-100">
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <a asp-controller="Projects" asp-action="Index" class="btn btn-primary btn-lg shadow-sm px-4 rounded-pill">
                     <i class="bi bi-folder-fill me-2"></i> My Projects
                 </a>
-                <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-primary btn-lg bg-white px-4">
+                <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary btn-lg bg-white px-4 rounded-pill border-0 shadow-sm">
                     <i class="bi bi-graph-up me-2"></i> Dashboard
                 </a>
-            </div>
-        }
-        else
-        {
-            <div class="d-flex gap-3 justify-content-center">
-                <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg shadow-sm px-4">
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg shadow-sm px-4 rounded-pill">
                     Get Started Free <i class="bi bi-arrow-right ms-2"></i>
                 </a>
-                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary btn-lg bg-white px-4">
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-secondary btn-lg bg-white px-4 rounded-pill border-0 shadow-sm">
                     Sign In
                 </a>
+            }
+        </div>
+        
+        <!-- Abstract Dashboard Mockup Graphic -->
+        <div class="mt-5 pt-4 animate-fade-in-up delay-200">
+            <div class="floating-mockup bg-white p-2 mx-auto" style="max-width: 800px;">
+                <div class="bg-light rounded-3 p-3 overflow-hidden" style="height: 300px; position: relative;">
+                    <!-- Fake UI Elements -->
+                    <div class="d-flex gap-2 mb-3">
+                        <div class="bg-danger rounded-circle" style="width:12px; height:12px;"></div>
+                        <div class="bg-warning rounded-circle" style="width:12px; height:12px;"></div>
+                        <div class="bg-success rounded-circle" style="width:12px; height:12px;"></div>
+                    </div>
+                    <div class="row h-100 g-3">
+                        <div class="col-3">
+                            <div class="bg-white rounded shadow-sm h-100 p-2 opacity-50"></div>
+                        </div>
+                        <div class="col-9">
+                            <div class="bg-white rounded shadow-sm h-100 p-3">
+                                <div class="bg-primary rounded opacity-25 w-25 mb-3" style="height:20px;"></div>
+                                <div class="bg-secondary rounded opacity-10 w-75 mb-2" style="height:10px;"></div>
+                                <div class="bg-secondary rounded opacity-10 w-50 mb-4" style="height:10px;"></div>
+                                <div class="row g-2">
+                                    <div class="col-4"><div class="bg-primary rounded opacity-10 w-100" style="height:100px;"></div></div>
+                                    <div class="col-4"><div class="bg-success rounded opacity-10 w-100" style="height:100px;"></div></div>
+                                    <div class="col-4"><div class="bg-warning rounded opacity-10 w-100" style="height:100px;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        }
+        </div>
     </div>
 </div>
 
-<div class="row g-4 mt-2">
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0 bg-white">
-            <div class="card-body p-4">
-                <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary rounded-3 mb-4" style="width: 48px; height: 48px;">
-                    <i class="bi bi-kanban fs-4"></i>
+<div class="container py-5 my-5">
+    <div class="text-center mb-5 animate-fade-in-up delay-300">
+        <h2 class="fw-bold mb-3">Everything you need to ship</h2>
+        <p class="text-muted fs-5">Powerful tools that get out of your way.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="bento-card">
+                <div class="icon-box icon-box-primary">
+                    <i class="bi bi-kanban"></i>
                 </div>
-                <h5 class="card-title fw-bold">Agile Workflows</h5>
-                <p class="card-text text-muted">
-                    Visualize your tasks with our interactive drag-and-drop Kanban board. Keep your team aligned and moving forward.
+                <h4 class="fw-bold mb-3">Agile Workflows</h4>
+                <p class="text-muted mb-0">
+                    Visualize your tasks with our interactive drag-and-drop Kanban board. Keep your team aligned effortlessly.
+                </p>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+            <div class="bento-card">
+                <div class="icon-box icon-box-success">
+                    <i class="bi bi-bar-chart-line"></i>
+                </div>
+                <h4 class="fw-bold mb-3">Real-time Metrics</h4>
+                <p class="text-muted mb-0">
+                    Get instant insights into your team's velocity and project health with our high-performance ADO.NET analytics dashboard.
+                </p>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+            <div class="bento-card">
+                <div class="icon-box icon-box-danger">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <h4 class="fw-bold mb-3">Enterprise Security</h4>
+                <p class="text-muted mb-0">
+                    Built-in role-based access control and strict resource-level authorization ensures your data stays completely private.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6">
+            <div class="bento-card">
+                <div class="icon-box icon-box-warning">
+                    <i class="bi bi-lightning-charge"></i>
+                </div>
+                <h4 class="fw-bold mb-3">Lightning Fast Performance</h4>
+                <p class="text-muted mb-0">
+                    Powered by .NET 10, DevLogix delivers sub-millisecond response times. From our React-driven SPA to our heavily optimized database queries, everything is built for speed.
+                </p>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-6">
+            <div class="bento-card" style="background: linear-gradient(135deg, var(--primary-color) 0%, #3730a3 100%); color: white;">
+                <div class="icon-box bg-white bg-opacity-25 text-white border-0">
+                    <i class="bi bi-bell-fill"></i>
+                </div>
+                <h4 class="fw-bold mb-3">Intelligent Notifications</h4>
+                <p class="text-white text-opacity-75 mb-0">
+                    Never miss an update. Our polymorphic notification engine dispatches updates via Email, SMS, and In-App channels the second a ticket status changes.
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0 bg-white">
-            <div class="card-body p-4">
-                <div class="d-inline-flex align-items-center justify-content-center bg-success bg-opacity-10 text-success rounded-3 mb-4" style="width: 48px; height: 48px;">
-                    <i class="bi bi-bar-chart-line fs-4"></i>
-                </div>
-                <h5 class="card-title fw-bold">Real-time Metrics</h5>
-                <p class="card-text text-muted">
-                    Get instant insights into your team's velocity and project health with our high-performance analytics dashboard.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0 bg-white">
-            <div class="card-body p-4">
-                <div class="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-10 text-danger rounded-3 mb-4" style="width: 48px; height: 48px;">
-                    <i class="bi bi-shield-check fs-4"></i>
-                </div>
-                <h5 class="card-title fw-bold">Enterprise Security</h5>
-                <p class="card-text text-muted">
-                    Built-in role-based access control and strict resource-level authorization ensures your data stays safe and private.
-                </p>
-            </div>
-        </div>
+</div>
+
+<div class="container">
+    <div class="cta-section shadow-lg">
+        <h2 class="fw-bold mb-4" style="font-size: 2.5rem;">Ready to transform your workflow?</h2>
+        <p class="text-white text-opacity-75 mb-5 fs-5 mx-auto" style="max-width: 600px;">
+            Join thousands of developers managing their projects with DevLogix. No credit card required.
+        </p>
+        <a asp-controller="Account" asp-action="Register" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow">
+            Create your workspace
+        </a>
     </div>
 </div>
