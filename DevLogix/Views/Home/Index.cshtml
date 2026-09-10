@@ -2,59 +2,78 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="text-center py-5">
-    <h1 class="display-4 fw-bold">DevLogix</h1>
-    <p class="lead text-muted">Project Management &amp; Bug Tracking — Simplified</p>
-    <hr class="my-4" />
+<div class="hero-section text-center mb-5 shadow-sm">
+    <div class="container position-relative z-index-1">
+        <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill fw-semibold">
+            ✨ DevLogix 2.0 is here
+        </span>
+        <h1 class="hero-title mb-4">Manage work.<br/>Ship faster.</h1>
+        <p class="lead text-muted mx-auto mb-5" style="max-width: 600px; font-size: 1.25rem;">
+            A premium, high-performance project management and issue tracking system built for modern development teams.
+        </p>
 
-    @if (User.Identity?.IsAuthenticated == true)
-    {
-        <p>Welcome back! Manage your projects and track issues.</p>
-        <div class="d-flex gap-3 justify-content-center">
-            <a asp-controller="Projects" asp-action="Index" class="btn btn-primary btn-lg">
-                My Projects
-            </a>
-            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-primary btn-lg">
-                Dashboard
-            </a>
-        </div>
-    }
-    else
-    {
-        <p>A self-hosted, lightweight alternative for managing projects and tracking bugs.</p>
-        <div class="d-flex gap-3 justify-content-center">
-            <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">
-                Get Started
-            </a>
-            <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary btn-lg">
-                Sign In
-            </a>
-        </div>
-    }
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <div class="d-flex gap-3 justify-content-center">
+                <a asp-controller="Projects" asp-action="Index" class="btn btn-primary btn-lg shadow-sm px-4">
+                    <i class="bi bi-folder-fill me-2"></i> My Projects
+                </a>
+                <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-primary btn-lg bg-white px-4">
+                    <i class="bi bi-graph-up me-2"></i> Dashboard
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="d-flex gap-3 justify-content-center">
+                <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg shadow-sm px-4">
+                    Get Started Free <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary btn-lg bg-white px-4">
+                    Sign In
+                </a>
+            </div>
+        }
+    </div>
 </div>
 
-<div class="row text-center mt-5">
-    <div class="col-md-4 mb-4">
-        <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title">Project Management</h5>
-                <p class="card-text text-muted">Create and manage projects with team members, track progress, and stay organized.</p>
+<div class="row g-4 mt-2">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 bg-white">
+            <div class="card-body p-4">
+                <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary rounded-3 mb-4" style="width: 48px; height: 48px;">
+                    <i class="bi bi-kanban fs-4"></i>
+                </div>
+                <h5 class="card-title fw-bold">Agile Workflows</h5>
+                <p class="card-text text-muted">
+                    Visualize your tasks with our interactive drag-and-drop Kanban board. Keep your team aligned and moving forward.
+                </p>
             </div>
         </div>
     </div>
-    <div class="col-md-4 mb-4">
-        <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title">Issue Tracking</h5>
-                <p class="card-text text-muted">Create tickets, assign priorities, track status changes, and collaborate with comments.</p>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 bg-white">
+            <div class="card-body p-4">
+                <div class="d-inline-flex align-items-center justify-content-center bg-success bg-opacity-10 text-success rounded-3 mb-4" style="width: 48px; height: 48px;">
+                    <i class="bi bi-bar-chart-line fs-4"></i>
+                </div>
+                <h5 class="card-title fw-bold">Real-time Metrics</h5>
+                <p class="card-text text-muted">
+                    Get instant insights into your team's velocity and project health with our high-performance analytics dashboard.
+                </p>
             </div>
         </div>
     </div>
-    <div class="col-md-4 mb-4">
-        <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title">Time Logging</h5>
-                <p class="card-text text-muted">Log time spent on tickets, export data, and get insights from the dashboard.</p>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 bg-white">
+            <div class="card-body p-4">
+                <div class="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-10 text-danger rounded-3 mb-4" style="width: 48px; height: 48px;">
+                    <i class="bi bi-shield-check fs-4"></i>
+                </div>
+                <h5 class="card-title fw-bold">Enterprise Security</h5>
+                <p class="card-text text-muted">
+                    Built-in role-based access control and strict resource-level authorization ensures your data stays safe and private.
+                </p>
             </div>
         </div>
     </div>

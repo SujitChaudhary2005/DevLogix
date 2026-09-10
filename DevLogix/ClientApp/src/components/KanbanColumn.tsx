@@ -15,32 +15,36 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ status, tickets }) => {
     <div
       style={{
         flex: '1 1 0',
-        minWidth: '220px',
-        maxWidth: '300px',
+        minWidth: '260px',
+        maxWidth: '320px',
         display: 'flex',
         flexDirection: 'column',
+        backgroundColor: '#f8fafc',
+        borderRadius: '12px',
+        padding: '16px',
+        border: '1px solid #e2e8f0'
       }}
     >
       <div
         style={{
-          padding: '10px 14px',
-          fontWeight: 700,
-          fontSize: '13px',
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-          color: STATUS_COLORS[status],
-          borderBottom: `3px solid ${STATUS_COLORS[status]}`,
-          marginBottom: '8px',
+          paddingBottom: '12px',
+          fontWeight: 600,
+          fontSize: '14px',
+          color: '#1e293b',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          marginBottom: '8px',
         }}
       >
-        <span>{displayName}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: STATUS_COLORS[status] }}></div>
+          <span>{displayName}</span>
+        </div>
         <span
           style={{
-            backgroundColor: STATUS_COLORS[status] + '20',
-            color: STATUS_COLORS[status],
+            backgroundColor: '#e2e8f0',
+            color: '#475569',
             padding: '2px 8px',
             borderRadius: '12px',
             fontSize: '12px',
@@ -58,10 +62,9 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ status, tickets }) => {
             {...provided.droppableProps}
             style={{
               flex: 1,
-              padding: '4px',
               minHeight: '200px',
-              backgroundColor: snapshot.isDraggingOver ? '#f0f7ff' : '#f8f9fa',
-              borderRadius: '6px',
+              backgroundColor: snapshot.isDraggingOver ? '#eef2ff' : 'transparent',
+              borderRadius: '8px',
               transition: 'background-color 0.2s ease',
             }}
           >
